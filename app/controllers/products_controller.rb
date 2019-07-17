@@ -13,9 +13,9 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
 
     if @product.save
-      redirect_to products_path, notice: "El producto ha sido guardado exitosamente"
+      redirect_to products_path, notice: "Producto guardado exitosamente"
     else
-      flash[:alert] = "El producto no ha sido guardado, por favor repetir la operacion"
+      flash[:alert] = "Producto no fue guardado"
       render :new
     end
   end
@@ -32,7 +32,7 @@ class ProductsController < ApplicationController
       render :edit
     end
   end
-  
+
   def destroy
     product = Product.find(params[:id])
     product.destroy

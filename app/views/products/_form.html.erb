@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div>
+        <h1 class="display-4"><%= form_title %></h1>
+      </div>
+      <%= form_for @product do |f| %>
+        <div>
+          <%= f.text_field :name, placeholder: "Nombre Producto", class: "form-control-lg m-3" %>
+        </div>
+        <div>
+          <%= f.text_field :price, placeholder: "Precio producto", class: "form-control-lg m-3" %>
+        </div>
+        <br>
+        <div class="form-group pt-0">
+          <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |b| %>
+           <br>
+           <%= b.label class:"label-checkbox" do %>
+             <%=b.check_box%>
+             <%=b.text%>
+            <% end %>
+          <% end %>
+         </div>
+            <%= f.submit form_title %>
+      <% end %>
+    </div>
+  </div>
+</div>
